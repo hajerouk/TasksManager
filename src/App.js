@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import { useEffect, useState } from "react";
+import { auth } from "./firebase/firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import Auth from "./contexts/AuthContext";
+import TaskList from "./components/TaskList";
+import "./styles/App.css";
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = () => {
+    signOut(auth);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {!user ? (
+        <Auth />
+      ) : (
+        <div className="dashboard-container">
+          <header className="dashboard-header">
+            <h2>Bienvenue {user.displayName || user.email}</h2>
+            <div className="user-info">
+              <button onClick={handleLogout}>Se déconnecter</button>
+            </div>
+          </header>
+          <TaskList user={user} />
+        </div>
+      )}
     </div>
   );
 }

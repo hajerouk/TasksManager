@@ -1,0 +1,270 @@
+:root {
+  --primary-bg: #fdf6f0;
+  --card-bg: #ffffff;
+  --accent: #ffb980;
+  --accent-hover: #ff9f57;
+  --text-main: #2b2d42;
+  --text-muted: #6c757d;
+  --done-color: #b5e48c;
+  --radius: 12px;
+  --shadow: 0 10px 25px rgba(0,0,0,0.08);
+  --transition: 0.25s ease-in-out;
+  --gap: 16px;
+  --max-width: 960px;
+  --font-main: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--primary-bg);
+  color: var(--text-main);
+}
+
+/* ---------- AUTHENTIFICATION ---------- */
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffe3ec, #d0f4f7);
+  padding: 1rem;
+}
+
+.auth-form {
+  background-color: var(--card-bg);
+  padding: 2.5rem 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  transition: transform 0.3s var(--transition);
+}
+
+.auth-form:hover {
+  transform: translateY(-5px);
+}
+
+.auth-form h2 {
+  margin-bottom: 2rem;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: var(--radius);
+  border: 1px solid #dcdcdc;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-form input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255,182,128,0.2);
+  outline: none;
+}
+
+.auth-form button {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.auth-form button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.auth-form p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.auth-form p span {
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.auth-form p span:hover {
+  text-decoration: underline;
+}
+
+.error {
+  background-color: #ffd6d6;
+  color: #a60000;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+/* ---------- DASHBOARD ---------- */
+
+.dashboard-container {
+  max-width: var(--max-width);
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h2 {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.user-info button {
+  background-color: var(--accent);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.user-info button:hover {
+  background-color: var(--accent-hover);
+}
+
+/* ---------- FORMULAIRE DE TÂCHES ---------- */
+
+.task-form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.task-form input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid #dcdcdc;
+  font-size: 1rem;
+}
+
+.task-form button {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  border: none;
+  background-color: var(--accent);
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.task-form button:hover {
+  background-color: var(--accent-hover);
+}
+
+/* ---------- LISTE DE TÂCHES ---------- */
+
+.task-list {
+  margin-top: 1.5rem;
+}
+
+.task-list h2 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.task-list ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ---------- TÂCHE ---------- */
+
+.task-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius);
+  background-color: var(--card-bg);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease;
+}
+
+.task-item:hover {
+  transform: translateY(-2px);
+}
+
+.task-item span {
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.task-item.done span {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.task-item small {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.task-actions svg {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.task-actions svg:hover {
+  transform: scale(1.2);
+}
+
+/* Icônes spécifiques */
+.check-icon.done {
+  color: var(--done-color);
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .task-form {
+    flex-direction: column;
+  }
+}
